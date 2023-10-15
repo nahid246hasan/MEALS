@@ -16,6 +16,9 @@ class MealDetailsScreen extends ConsumerWidget {
   //basically ConsumerStatefulWidget page e ref globally thake tai mention kora lage nah
   //but ConsumerWidget er khetre build method e mention kora lage
   Widget build(BuildContext context, WidgetRef ref) {
+    final favoriteMeals=ref.watch(favoriteMealsProvider);
+    final isFavorite=favoriteMeals.contains(meal);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(meal.title),
@@ -36,7 +39,7 @@ class MealDetailsScreen extends ConsumerWidget {
                 ),
               );
             },
-            icon: Icon(Icons.star),
+            icon: Icon(isFavorite?Icons.star:Icons.star_border),
           ),
         ],
       ),
